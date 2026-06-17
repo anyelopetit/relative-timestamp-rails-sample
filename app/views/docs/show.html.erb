@@ -45,9 +45,6 @@
           <a href="#install" class="inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--ht-tiger)] px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#db4000] focus:outline-none focus:ring-4 focus:ring-[var(--ht-tiger-20)]">
             Install the element
           </a>
-          <a href="#examples" class="inline-flex min-h-11 items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/18 focus:outline-none focus:ring-4 focus:ring-[var(--ht-lavender)]/70">
-            View live timestamps
-          </a>
           <a href="#sandbox" class="inline-flex min-h-11 items-center justify-center rounded-full border border-[var(--ht-seafoam)] bg-[var(--ht-seafoam)] px-6 py-3 text-sm font-semibold text-[var(--ht-night)] transition-colors duration-200 hover:bg-white focus:outline-none focus:ring-4 focus:ring-[var(--ht-seafoam)]/50">
             Open scale sandbox
           </a>
@@ -56,19 +53,48 @@
 
       <aside class="rounded-[2.25rem] bg-[var(--ht-seafoam)] p-4 text-[var(--ht-night)] shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
         <div class="rounded-[1.75rem] bg-white p-6">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--ht-indigo)]">Live browser label</p>
-          <div class="mt-6 rounded-[1.5rem] bg-[var(--ht-lavender-light)] p-5">
-            <p class="text-sm font-medium text-[var(--ht-night-60)]">Customer conversation updated</p>
-            <%= relative_timestamp_tag(30.seconds.ago, fallback: "30 sec", locale: "en", classes: "font-display mt-2 block text-6xl font-semibold tracking-[-0.06em] text-[var(--ht-night)]") %>
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--ht-indigo)]">Live browser label</p>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-[var(--ht-seafoam-20)] px-3 py-1">
+              <span class="relative flex h-2 w-2">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--ht-seafoam)] opacity-75" style="animation-duration: 1.5s"></span>
+                <span class="relative inline-flex h-2 w-2 rounded-full bg-[var(--ht-seafoam)]"></span>
+              </span>
+              <span class="text-xs font-semibold uppercase tracking-wide text-[var(--ht-night)]">Live</span>
+            </span>
           </div>
-          <div class="mt-4 grid grid-cols-2 gap-4">
-            <div class="rounded-[1.25rem] bg-[var(--ht-banana-20)] p-4">
-              <p class="text-xs font-semibold uppercase tracking-wide text-[var(--ht-night-60)]">Refresh</p>
-              <p class="font-display mt-1 text-3xl font-semibold">local</p>
+
+          <div class="mt-5 space-y-3">
+            <div class="flex items-center gap-4 rounded-[1.25rem] bg-[var(--ht-lavender-light)] p-4" style="border-left: 4px solid var(--ht-indigo)">
+              <div class="min-w-0 flex-1">
+                <p class="truncate text-sm font-medium text-[var(--ht-night)]">Customer conversation updated</p>
+                <p class="mt-0.5 text-xs text-[var(--ht-night-60)]">Support · Inbox</p>
+              </div>
+              <%= relative_timestamp_tag(30.seconds.ago, fallback: "30 sec", locale: "en", classes: "font-display shrink-0 text-2xl font-semibold tracking-[-0.04em] text-[var(--ht-indigo)]") %>
             </div>
-            <div class="rounded-[1.25rem] bg-[var(--ht-blush-40)] p-4">
-              <p class="text-xs font-semibold uppercase tracking-wide text-[var(--ht-night-60)]">Cleanup</p>
-              <p class="font-display mt-1 text-3xl font-semibold">safe</p>
+
+            <div class="flex items-center gap-4 rounded-[1.25rem] bg-[var(--ht-banana-20)] p-4" style="border-left: 4px solid var(--ht-banana)">
+              <div class="min-w-0 flex-1">
+                <p class="truncate text-sm font-medium text-[var(--ht-night)]">New order received #4821</p>
+                <p class="mt-0.5 text-xs text-[var(--ht-night-60)]">E‑commerce · Orders</p>
+              </div>
+              <%= relative_timestamp_tag(12.minutes.ago, fallback: "12 min", locale: "en", classes: "font-display shrink-0 text-2xl font-semibold tracking-[-0.04em] text-[var(--ht-night)]") %>
+            </div>
+
+            <div class="flex items-center gap-4 rounded-[1.25rem] bg-[var(--ht-blush-40)] p-4" style="border-left: 4px solid var(--ht-blush)">
+              <div class="min-w-0 flex-1">
+                <p class="truncate text-sm font-medium text-[var(--ht-night)]">Campaign "Summer Sale" sent</p>
+                <p class="mt-0.5 text-xs text-[var(--ht-night-60)]">Marketing · Campaigns</p>
+              </div>
+              <%= relative_timestamp_tag(3.hours.ago, fallback: "3 hr", locale: "en", classes: "font-display shrink-0 text-2xl font-semibold tracking-[-0.04em] text-[var(--ht-night)]") %>
+            </div>
+
+            <div class="flex items-center gap-4 rounded-[1.25rem] bg-[var(--ht-seafoam-20)] p-4" style="border-left: 4px solid var(--ht-seafoam)">
+              <div class="min-w-0 flex-1">
+                <p class="truncate text-sm font-medium text-[var(--ht-night)]">Contact profile enriched</p>
+                <p class="mt-0.5 text-xs text-[var(--ht-night-60)]">CRM · Contacts</p>
+              </div>
+              <%= relative_timestamp_tag(2.days.ago, fallback: "2 days", locale: "en", classes: "font-display shrink-0 text-2xl font-semibold tracking-[-0.04em] text-[var(--ht-night)]") %>
             </div>
           </div>
         </div>
@@ -77,137 +103,6 @@
   </header>
 
   <main>
-    <section id="install" class="mx-auto grid max-w-7xl gap-5 px-5 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">
-      <article class="rounded-[2rem] border-2 border-[var(--ht-night)] bg-white p-6 shadow-[8px_8px_0_var(--ht-night)] sm:p-8">
-        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--ht-tiger)]">Step 1</p>
-        <h2 class="font-display mt-3 text-3xl font-semibold tracking-[-0.035em]">Install and pin the npm package</h2>
-        <p class="mt-4 max-w-prose leading-7 text-[var(--ht-night-60)]">
-          This sample is an importmap Rails app, so it installs from npm, vendors the package ESM build, and pins the module for browser imports.
-        </p>
-        <pre class="mt-6 overflow-x-auto rounded-[1.25rem] bg-[var(--ht-night)] p-5 text-sm leading-6 text-[var(--ht-seafoam)]"><code>npm install ../relative-timestamp-element
-cp node_modules/relative-timestamp-element/dist/index.js vendor/javascript/relative-timestamp-element.js
-cp node_modules/relative-timestamp-element/dist/chunk-*.js vendor/javascript/
-
-# config/importmap.rb
-pin "relative-timestamp-element", to: "relative-timestamp-element.js"</code></pre>
-      </article>
-
-      <article id="stimulus" class="rounded-[2rem] border-2 border-[var(--ht-night)] bg-[var(--ht-banana)] p-6 shadow-[8px_8px_0_var(--ht-night)] sm:p-8">
-        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--ht-indigo)]">Step 2</p>
-        <h2 class="font-display mt-3 text-3xl font-semibold tracking-[-0.035em]">Wrap it with Stimulus lifecycle</h2>
-        <p class="mt-4 max-w-prose leading-7 text-[var(--ht-night)]/75">
-          Stimulus owns connection and disconnection, which makes the element safe with Turbo morphing, frame replacement, and dynamic DOM updates.
-        </p>
-        <pre class="mt-6 overflow-x-auto rounded-[1.25rem] border-2 border-[var(--ht-night)] bg-[var(--ht-night)] p-5 text-sm leading-6 text-[var(--ht-seafoam)] shadow-[6px_6px_0_var(--ht-indigo)]"><code>import { Controller } from "@hotwired/stimulus"
-import { RelativeTimestamp } from "relative-timestamp-element"
-
-export default class extends Controller {
-  static values = {
-    timestamp: String,
-    locale: { type: String, default: "en" }
-  }
-
-  connect() {
-    this.timestampController = new RelativeTimestamp(this.element, {
-      locale: this.localeValue
-    })
-    this.timestampController.connect()
-  }
-
-  disconnect() {
-    this.timestampController?.disconnect()
-  }
-}</code></pre>
-      </article>
-    </section>
-
-    <section id="examples" class="mx-auto max-w-7xl px-5 py-8 sm:px-6 lg:px-8">
-      <div class="rounded-[2.5rem] bg-white p-6 sm:p-8">
-        <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--ht-indigo)]">Live examples</p>
-            <h2 class="font-display mt-2 text-4xl font-semibold tracking-[-0.045em]">English compact labels</h2>
-          </div>
-          <p class="max-w-xl leading-7 text-[var(--ht-night-60)]">Server-rendered fallback text appears immediately. Stimulus upgrades each timestamp and keeps it fresh locally.</p>
-        </div>
-        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <% english_samples.each do |fallback, time| %>
-            <article class="rounded-[1.5rem] border border-[var(--ht-night-10)] bg-[var(--ht-lavender-light)] p-5 transition-colors duration-200 hover:border-[var(--ht-indigo)]">
-              <p class="text-sm font-medium text-[var(--ht-night-60)]">Fallback: <%= fallback %></p>
-              <%= relative_timestamp_tag(time, fallback: fallback, locale: "en", classes: "font-display mt-2 block text-3xl font-semibold tracking-[-0.04em] text-[var(--ht-night)]") %>
-            </article>
-          <% end %>
-        </div>
-      </div>
-    </section>
-
-    <section class="mx-auto max-w-7xl px-5 py-8 sm:px-6 lg:px-8">
-      <div class="rounded-[2.5rem] bg-[var(--ht-indigo)] p-6 text-white sm:p-8">
-        <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--ht-seafoam)]">Localización</p>
-            <h2 class="font-display mt-2 text-4xl font-semibold tracking-[-0.045em]">Etiquetas compactas en español</h2>
-          </div>
-          <p class="max-w-xl leading-7 text-white/78">Cada elemento puede seleccionar idioma con <code class="rounded bg-white/12 px-1.5 py-0.5">data-relative-timestamp-locale-value="es"</code>.</p>
-        </div>
-        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <% spanish_samples.each do |fallback, time| %>
-            <article class="rounded-[1.5rem] border border-white/20 bg-white/10 p-5 transition-colors duration-200 hover:bg-white/16">
-              <p class="text-sm font-medium text-white/70">Fallback: <%= fallback %></p>
-              <%= relative_timestamp_tag(time, fallback: fallback, locale: "es", classes: "font-display mt-2 block text-3xl font-semibold tracking-[-0.04em] text-white") %>
-            </article>
-          <% end %>
-        </div>
-      </div>
-    </section>
-
-    <section class="mx-auto grid max-w-7xl gap-5 px-5 py-8 sm:px-6 lg:grid-cols-2 lg:px-8">
-      <article class="rounded-[2rem] bg-[var(--ht-seafoam)] p-6 sm:p-8">
-        <h2 class="font-display text-3xl font-semibold tracking-[-0.035em]">Rails helper usage</h2>
-        <p class="mt-4 leading-7 text-[var(--ht-night)]/75">The helper keeps ERB concise while preserving semantic fallback-first HTML.</p>
-        <pre class="mt-6 overflow-x-auto rounded-[1.25rem] bg-white p-5 text-sm leading-6 text-[var(--ht-night)]"><code>&lt;%= relative_timestamp_tag(
-  5.minutes.ago,
-  fallback: "5 min",
-  locale: "en"
-) %&gt;
-
-&lt;time
-  data-controller="relative-timestamp"
-  data-relative-timestamp-timestamp-value="..."
-  data-relative-timestamp-locale-value="es"
-  datetime="..."&gt;
-  5 min
-&lt;/time&gt;</code></pre>
-      </article>
-
-      <article class="rounded-[2rem] bg-[var(--ht-blush)] p-6 sm:p-8">
-        <h2 class="font-display text-3xl font-semibold tracking-[-0.035em]">Refresh strategy</h2>
-        <p class="mt-4 leading-7 text-[var(--ht-night)]/75">No global polling loop. Each timestamp schedules the next moment its visible label can change.</p>
-        <ul class="mt-6 space-y-3 text-[var(--ht-night)]">
-          <li class="rounded-2xl bg-white/80 p-4"><strong>Under 1 minute:</strong> second boundaries.</li>
-          <li class="rounded-2xl bg-white/80 p-4"><strong>Under 1 hour:</strong> minute boundaries.</li>
-          <li class="rounded-2xl bg-white/80 p-4"><strong>Under 1 day:</strong> hour boundaries.</li>
-          <li class="rounded-2xl bg-white/80 p-4"><strong>Older:</strong> day boundaries.</li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="mx-auto max-w-7xl px-5 py-8 sm:px-6 lg:px-8">
-      <div class="rounded-[2.5rem] border-2 border-[var(--ht-night)] bg-[var(--ht-banana)] p-6 shadow-[8px_8px_0_var(--ht-night)] sm:p-8" data-controller="demo-timestamps" data-demo-timestamps-removal-delay-value="10000">
-        <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--ht-indigo)]">Turbo-ready lifecycle</p>
-            <h2 class="font-display mt-2 text-4xl font-semibold tracking-[-0.045em]">Dynamic insertion and cleanup</h2>
-            <p class="mt-3 max-w-2xl leading-7 text-[var(--ht-night)]/75">Click the button to add a timestamp. Stimulus connects it automatically, then disconnects it when the demo removes the card.</p>
-          </div>
-          <button type="button" class="min-h-11 cursor-pointer rounded-full bg-[var(--ht-night)] px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--ht-indigo)] focus:outline-none focus:ring-4 focus:ring-[var(--ht-indigo-20)]" data-action="demo-timestamps#add">
-            Add temporary timestamp
-          </button>
-        </div>
-        <p class="sr-only" aria-live="polite" data-demo-timestamps-target="status"></p>
-        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-demo-timestamps-target="list"></div>
-      </div>
-    </section>
 
     <section id="sandbox" class="mx-auto max-w-7xl px-5 py-8 sm:px-6 lg:px-8">
       <div class="rounded-[2.5rem] bg-[var(--ht-night)] p-5 text-white sm:p-8" data-controller="timestamp-sandbox">
@@ -262,6 +157,81 @@ export default class extends Controller {
           </div>
         </div>
       </div>
+    </section>
+
+    <section id="install" class="mx-auto grid max-w-7xl gap-5 px-5 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">
+      <article class="rounded-[2rem] border-2 border-[var(--ht-night)] bg-white p-6 shadow-[8px_8px_0_var(--ht-night)] sm:p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--ht-tiger)]">Step 1</p>
+        <h2 class="font-display mt-3 text-3xl font-semibold tracking-[-0.035em]">Install and pin the npm package</h2>
+        <p class="mt-4 max-w-prose leading-7 text-[var(--ht-night-60)]">
+          This sample is an importmap Rails app, so it installs from npm, vendors the package ESM build, and pins the module for browser imports.
+        </p>
+        <pre class="mt-6 overflow-x-auto rounded-[1.25rem] bg-[var(--ht-night)] p-5 text-sm leading-6 text-[var(--ht-seafoam)]"><code>npm install ../relative-timestamp-element
+cp node_modules/relative-timestamp-element/dist/index.js vendor/javascript/relative-timestamp-element.js
+cp node_modules/relative-timestamp-element/dist/chunk-*.js vendor/javascript/
+
+# config/importmap.rb
+pin "relative-timestamp-element", to: "relative-timestamp-element.js"</code></pre>
+      </article>
+
+      <article id="stimulus" class="rounded-[2rem] border-2 border-[var(--ht-night)] bg-[var(--ht-banana)] p-6 shadow-[8px_8px_0_var(--ht-night)] sm:p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--ht-indigo)]">Step 2</p>
+        <h2 class="font-display mt-3 text-3xl font-semibold tracking-[-0.035em]">Wrap it with Stimulus lifecycle</h2>
+        <p class="mt-4 max-w-prose leading-7 text-[var(--ht-night)]/75">
+          Stimulus owns connection and disconnection, which makes the element safe with Turbo morphing, frame replacement, and dynamic DOM updates.
+        </p>
+        <pre class="mt-6 overflow-x-auto rounded-[1.25rem] border-2 border-[var(--ht-night)] bg-[var(--ht-night)] p-5 text-sm leading-6 text-[var(--ht-seafoam)] shadow-[6px_6px_0_var(--ht-indigo)]"><code>import { Controller } from "@hotwired/stimulus"
+import { RelativeTimestamp } from "relative-timestamp-element"
+
+export default class extends Controller {
+  static values = {
+    timestamp: String,
+    locale: { type: String, default: "en" }
+  }
+
+  connect() {
+    this.timestampController = new RelativeTimestamp(this.element, {
+      locale: this.localeValue
+    })
+    this.timestampController.connect()
+  }
+
+  disconnect() {
+    this.timestampController?.disconnect()
+  }
+}</code></pre>
+      </article>
+    </section>
+
+    <section class="mx-auto grid max-w-7xl gap-5 px-5 py-8 sm:px-6 lg:grid-cols-2 lg:px-8">
+      <article class="rounded-[2rem] bg-[var(--ht-seafoam)] p-6 sm:p-8">
+        <h2 class="font-display text-3xl font-semibold tracking-[-0.035em]">Rails helper usage</h2>
+        <p class="mt-4 leading-7 text-[var(--ht-night)]/75">The helper keeps ERB concise while preserving semantic fallback-first HTML.</p>
+        <pre class="mt-6 overflow-x-auto rounded-[1.25rem] bg-white p-5 text-sm leading-6 text-[var(--ht-night)]"><code>&lt;%= relative_timestamp_tag(
+  5.minutes.ago,
+  fallback: "5 min",
+  locale: "en"
+) %&gt;
+
+&lt;time
+  data-controller="relative-timestamp"
+  data-relative-timestamp-timestamp-value="..."
+  data-relative-timestamp-locale-value="es"
+  datetime="..."&gt;
+  5 min
+&lt;/time&gt;</code></pre>
+      </article>
+
+      <article class="rounded-[2rem] bg-[var(--ht-blush)] p-6 sm:p-8">
+        <h2 class="font-display text-3xl font-semibold tracking-[-0.035em]">Refresh strategy</h2>
+        <p class="mt-4 leading-7 text-[var(--ht-night)]/75">No global polling loop. Each timestamp schedules the next moment its visible label can change.</p>
+        <ul class="mt-6 space-y-3 text-[var(--ht-night)]">
+          <li class="rounded-2xl bg-white/80 p-4"><strong>Under 1 minute:</strong> second boundaries.</li>
+          <li class="rounded-2xl bg-white/80 p-4"><strong>Under 1 hour:</strong> minute boundaries.</li>
+          <li class="rounded-2xl bg-white/80 p-4"><strong>Under 1 day:</strong> hour boundaries.</li>
+          <li class="rounded-2xl bg-white/80 p-4"><strong>Older:</strong> day boundaries.</li>
+        </ul>
+      </article>
     </section>
 
     <section class="mx-auto max-w-7xl px-5 py-8 pb-20 sm:px-6 lg:px-8">
