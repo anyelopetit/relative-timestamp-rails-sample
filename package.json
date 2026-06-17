@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "test:js": "vitest run"
+  },
+  "dependencies": {
+    "relative-timestamp-element": "file:../relative-timestamp-element"
+  },
+  "devDependencies": {
+    "@hotwired/stimulus": "latest",
+    "jsdom": "latest",
+    "vitest": "latest"
+  }
+}

@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Bagoss";
+  src: url("/assets/BagossExtended-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bagoss";
+  src: url("/assets/BagossExtended-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Object Sans";
+  src: url("/assets/PPObjectSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Object Sans";
+  src: url("/assets/PPObjectSans-Medium.woff2") format("woff2");
+  font-weight: 500 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ht-banana: rgb(255, 237, 20);
+  --ht-banana-20: rgb(255, 251, 208);
+  --ht-blush: rgb(255, 220, 244);
+  --ht-blush-40: rgb(255, 242, 250);
+  --ht-indigo: rgb(85, 10, 171);
+  --ht-indigo-20: rgb(222, 206, 238);
+  --ht-lavender: rgb(221, 196, 255);
+  --ht-lavender-light: rgb(240, 229, 255);
+  --ht-night: rgb(23, 3, 55);
+  --ht-night-10: rgb(231, 229, 234);
+  --ht-night-60: rgb(114, 104, 132);
+  --ht-seafoam: rgb(165, 255, 163);
+  --ht-seafoam-20: rgb(237, 255, 237);
+  --ht-tiger: rgb(255, 76, 0);
+  --ht-tiger-20: rgb(255, 223, 204);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Object Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ht-night);
+  background: var(--ht-lavender-light);
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: "Bagoss", "Object Sans", system-ui, sans-serif;
+}
+
+code,
+pre {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
