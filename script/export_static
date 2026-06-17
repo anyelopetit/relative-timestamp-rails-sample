@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUTPUT_DIR="${ROOT_DIR}/static-site"
+PORT="${STATIC_EXPORT_PORT:-3020}"
+PID=""
+
+cleanup() {
+  if [[ -n "${PID}" ]] && kill -0 "${PID}" >/dev/null 2>&1; then
+    kill "${PID}" >/dev/null 2>&1 || true
+    wait "${PID}" >/dev/null 2>&1 || true
+  fi
+}
+
+trap cleanup EXIT
+
+cd "${ROOT_DIR}"
+
+rm -rf "${OUTPUT_DIR}"
+mkdir -p "${OUTPUT_DIR}"
+
+bin/rails tailwindcss:build
+SECRET_KEY_BASE_DUMMY=1 RAILS_ENV=production bin/rails assets:precompile
+
+RAILS_ENV=production \
+RAILS_SERVE_STATIC_FILES=true \
+SECRET_KEY_BASE="$(bin/rails secret)" \
+bin/rails server -b 127.0.0.1 -p "${PORT}" >/tmp/relative-timestamp-static-export.log 2>&1 &
+PID="$!"
+
+for _ in {1..60}; do
+  if curl -fsS "http://127.0.0.1:${PORT}/up" >/dev/null 2>&1; then
+    break
+  fi
+
+  if ! kill -0 "${PID}" >/dev/null 2>&1; then
+    cat /tmp/relative-timestamp-static-export.log >&2
+    exit 1
+  fi
+
+  sleep 0.5
+done
+
+curl -fsS "http://127.0.0.1:${PORT}/" -o "${OUTPUT_DIR}/index.html"
+
+cp -R public/assets "${OUTPUT_DIR}/assets"
+cp public/400.html public/404.html public/406-unsupported-browser.html public/422.html public/500.html "${OUTPUT_DIR}/"
+cp public/hellotext-icon.png public/icon.png public/icon.svg public/robots.txt "${OUTPUT_DIR}/"
+
+printf 'Static export written to %s\n' "${OUTPUT_DIR}"

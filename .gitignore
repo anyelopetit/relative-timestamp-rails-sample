@@ -26,6 +26,9 @@
 
 /public/assets
 
+# Ignore generated static export output.
+/static-site/
+
 # Ignore key files for decrypting credentials and more.
 /config/*.key
 

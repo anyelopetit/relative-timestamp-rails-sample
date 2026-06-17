@@ -40,6 +40,38 @@ The documentation UI is available at `/`.
 
 For hosted deploys, provide the Rails master key through the platform's encrypted environment variables, for example `RAILS_MASTER_KEY` on Render/Fly/Koyeb.
 
+## Static Export
+
+This app can be deployed without a Rails server by exporting the rendered documentation page and precompiled assets:
+
+```sh
+bundle install
+npm install
+script/export_static
+```
+
+The export writes a deployable static site to `static-site/`. That directory is generated output and should not be committed.
+
+Recommended static hosts:
+
+- Cloudflare Pages
+- Netlify
+- Vercel static output
+
+Use this build command:
+
+```sh
+bundle install && npm install && script/export_static
+```
+
+Use this output/publish directory:
+
+```text
+static-site
+```
+
+Prefer root-domain/subdomain deployments such as `https://example.pages.dev/` or `https://example.netlify.app/`. The generated HTML references assets with root-relative `/assets/...` paths.
+
 ## Git Hygiene
 
 Track source, lockfiles, vendored importmap JavaScript, fonts, and static public assets. Do not track generated or local-only files such as:
